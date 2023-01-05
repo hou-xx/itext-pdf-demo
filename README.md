@@ -19,6 +19,12 @@
     <version>5.2.0</version>
 </dependency>
 ```
+## 示例代码
+### 文字填充 PDF 表单
+Demo.fillTextDemo()
+### PDF 表单添加图片（可通过表单定位或者绝对位置定位）
+Demo.fillImageDemo()
+
 ## PDF模板制作
 使用 Adobe Acrobat 或 福昕高级PDF编辑器 制作即可
 

@@ -174,9 +174,11 @@ public class Demo {
      */
     public static OutputStream generate(PdfReader template, Map data)
             throws Exception {
-
+        // 使用 itext-asian 包里的中文字体（中文仅有STSong-Light，华文宋体 一个字体）
         BaseFont bfChinese = BaseFont.createFont("STSong-Light",
                 "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
+        // 可以选择使用其他字体文件，避免应用程序运行在 linux 环境时缺少字体文件
+//        BaseFont  bfChinese = BaseFont.createFont("template/microsoft-yahei.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
 
         try {

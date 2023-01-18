@@ -14,6 +14,7 @@
             <version>5.5.12</version>
         </dependency>
         <dependency>
+            <!-- 若不使用 asian 包里的字体可不引入，中文仅有 STSong-Light（华文宋体） 一个字体  -->
             <groupId>com.itextpdf</groupId>
             <artifactId>itext-asian</artifactId>
             <version>5.2.0</version>

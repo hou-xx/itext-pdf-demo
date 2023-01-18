@@ -178,6 +178,7 @@ public class Demo {
         BaseFont bfChinese = BaseFont.createFont("STSong-Light",
                 "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
         // 可以选择使用其他字体文件，避免应用程序运行在 linux 环境时缺少字体文件
+        // 微软雅黑仅用于示例，注意字体商业版权
 //        BaseFont  bfChinese = BaseFont.createFont("template/microsoft-yahei.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
 

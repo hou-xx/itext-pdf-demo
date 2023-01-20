@@ -1,4 +1,4 @@
-package com.hxx;
+package com.hxx.pdf;
 
 import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.AcroFields;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * <ul>
- * <li>功能说明：</li>
+ * <li>功能说明：PDF 填充示例</li>
  * <li>作者：tal on 2018/4/4 0004 13:44 </li>
  * <li>邮箱：hou_xiangxiang@126.com</li>
  * </ul>
@@ -29,7 +29,6 @@ import java.util.Map;
 public class Demo {
     private static final String TEMPLATE_PATH = "template/template.pdf";
     private static final String IMAGE_PATH = "template/signet.png";
-    private static final String IMAGE_FIELD_NAME = "gender";
 
     private static final String TEXT_RESULT_PATH = "target/text_result.pdf";
     private static final String IMAGE_RESULT_PATH = "target/image_result.pdf";
@@ -144,14 +143,16 @@ public class Demo {
     /**
      * 将数据转换为输入字节流
      */
-    protected InputStream convertTransData(Map map)
-            throws Exception {
+    protected InputStream convertTransData(Map map) {
         if (map == null || map.isEmpty()) {
             return null;
         }
+        ByteArrayOutputStream out = null;
+        OutputStream fos = null;
+
         try {
             InputStream in = new FileInputStream(TEMPLATE_PATH);
-            ByteArrayOutputStream out =
+            out =
                     (ByteArrayOutputStream) generate(
                             new PdfReader(in),
                             map);
@@ -159,13 +160,26 @@ public class Demo {
             ByteArrayInputStream ret =
                     new ByteArrayInputStream(out.toByteArray());
             //将pdf字节流输出到文件流
-            OutputStream fos = new FileOutputStream(TEXT_RESULT_PATH);
+            fos = new FileOutputStream(TEXT_RESULT_PATH);
             fos.write(out.toByteArray());
-            fos.close();
-            out.close();
             return ret;
         } catch (Exception e) {
-            throw new Exception(e);
+            throw new RuntimeException(e);
+        } finally {
+            if (null != out) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (null != fos) {
+                try {
+                    out.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -200,13 +214,9 @@ public class Demo {
             stamp.setFormFlattening(true);
             stamp.close();
             template.close();
-
             return out;
-
         } catch (Exception e) {
-
             e.printStackTrace();
-
             return null;
         }
 

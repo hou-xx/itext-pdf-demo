@@ -7,6 +7,9 @@
     <groupId>com.hxx</groupId>
     <artifactId>itext-pdf</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <properties>
+        <batik.version>1.16</batik.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -37,18 +40,19 @@
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-all</artifactId>
-            <version>1.16</version>
+            <version>${batik.version}</version>
             <type>pom</type>
         </dependency>
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-transcoder</artifactId>
-            <version>1.16</version>
+            <version>${batik.version}</version>
         </dependency>
+        <!-- 转码实现，可替代 -->
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-codec</artifactId>
-            <version>1.16</version>
+            <version>${batik.version}</version>
         </dependency>
         <!-- 图片动态填充 end -->
     </dependencies>
